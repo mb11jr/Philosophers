@@ -6,7 +6,7 @@
 /*   By: mbentale <mbentale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:56:10 by mbentale          #+#    #+#             */
-/*   Updated: 2025/08/09 23:25:38 by mbentale         ###   ########.fr       */
+/*   Updated: 2025/08/10 08:39:56 by mbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ void				init_philos(t_philo *philos, t_data *data,
 
 // thread creation
 void				create_thread(t_data *data, pthread_mutex_t *forks);
-void				destroy_all(char *str, t_data *data,
-						pthread_mutex_t *forks);
+void				ft_destroy(char *str, t_data *data, pthread_mutex_t *forks);
 
 // philo routine
 void				*philo_routine(void *ptr);
@@ -83,6 +82,6 @@ int					ft_strlen(char *str);
 int					is_all_numeric(char *str);
 int					is_valid_input(int ac, char **av);
 size_t				get_time_in_ms(void);
-int	ft_usleep(size_t ms);
+int					ft_usleep(size_t ms);
 
 #endif

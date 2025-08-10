@@ -6,13 +6,13 @@
 /*   By: mbentale <mbentale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 18:25:36 by mbentale          #+#    #+#             */
-/*   Updated: 2025/08/09 23:36:34 by mbentale         ###   ########.fr       */
+/*   Updated: 2025/08/10 08:39:56 by mbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	destroy_all(char *str, t_data *data, pthread_mutex_t *forks)
+void	ft_destroy(char *str, t_data *data, pthread_mutex_t *forks)
 {
 	int	i;
 
@@ -38,22 +38,22 @@ void	create_thread(t_data *data, pthread_mutex_t *forks)
 	int			i;
 
 	if (pthread_create(&tracker, NULL, &checker, data->philos) != 0)
-		destroy_all("pthread_create error!", data, forks);
+		ft_destroy("pthread_create error!", data, forks);
 	i = 0;
 	while (i < data->philos[0].num_of_philos)
 	{
 		if (pthread_create(&data->philos[i].thread, NULL, &philo_routine,
 				&data->philos[i]) != 0)
-			destroy_all("pthread_create error!", data, forks);
+			ft_destroy("pthread_create error!", data, forks);
 		i++;
 	}
 	if (pthread_join(tracker, NULL) != 0)
-		destroy_all("pthread_join error!", data, forks);
+		ft_destroy("pthread_join error!", data, forks);
 	i = 0;
 	while (i < data->philos[0].num_of_philos)
 	{
 		if (pthread_join(data->philos[i].thread, NULL) != 0)
-			destroy_all("pthread_join error!", data, forks);
+			ft_destroy("pthread_join error!", data, forks);
 		i++;
 	}
 }

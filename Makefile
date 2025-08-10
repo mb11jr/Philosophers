@@ -14,7 +14,7 @@ MAKE = make --noprint-directory
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -pthread
 
-SRCS = main.c init.c threads.c philo_routine.c checker.c utils.c
+SRCS = $(addprefix src/, main.c init.c threads.c philo_routine.c checker.c utils.c)
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
